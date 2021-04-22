@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jaimereyescardenas/proyecto-microservicios-config
+#          repos:
+#            developer:
+#              pattern:
+#                - '*/dev'
+#              uri: https://github.com/jaimereyescardenas/proyecto-microservicios-config
+
+#HTTP Server
+server:
+  port: 4444

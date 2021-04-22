@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: servicio.tipo
+  cloud:
+    config:
+      uri: http://localhost:4444
