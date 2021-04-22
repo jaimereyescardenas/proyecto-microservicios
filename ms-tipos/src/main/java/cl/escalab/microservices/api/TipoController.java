@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.escalab.microservices.exception.BadRequestException;
+import cl.escalab.microservices.exception.ResourceNotFoundException;
 import cl.escalab.microservices.model.Tipo;
 import cl.escalab.microservices.service.TipoService;
 
@@ -34,13 +36,13 @@ public class TipoController {
 	public Tipo getById(@PathVariable(name = "id") Long id) {
 		
 		if (id <= 0) {
-			// TODO BadRequestException
+			throw new BadRequestException();
 		}
 		
 		Optional<Tipo> tipo = tipoService.findById(id);
 		
 		if (!tipo.isPresent()) {
-			// TODO NotFoundException
+			throw new ResourceNotFoundException();
 		}
 		
 		return tipo.get();
@@ -51,7 +53,7 @@ public class TipoController {
 	public Tipo createTipo(@RequestBody Tipo tipo) {
 		
 		if (tipo == null) {
-			// TODO BadRequestException
+			throw new BadRequestException();
 		}
 		
 		Tipo savedTipo = tipoService.save(tipo);
@@ -62,7 +64,7 @@ public class TipoController {
 	public Tipo edit(@PathVariable(name = "id") Long id, @RequestBody Tipo tipo) {
 		
 		if (id != tipo.getId()) {
-			// TODO BadRequestException
+			throw new BadRequestException();
 		}
 		
 		Tipo modifiedTipo = tipoService.save(tipo);
@@ -76,7 +78,7 @@ public class TipoController {
 		Optional<Tipo> tipo = tipoService.findById(id);
 		
 		if (!tipo.isPresent()) {
-			// TODO NotFoundException
+			throw new ResourceNotFoundException();
 		}
 		
 		tipoService.deleteById(id);
