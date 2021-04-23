@@ -1,0 +1,13 @@
+# Discovery Server Accesseureka:  client:    register-with-eureka: false    serviceUrl:      defaultZone: http://localhost:8761/eurekaserver:  port: 8000 
+
+zuul:
+  routes:
+    items:
+      path: /items/**
+      serviceId: servicio-item
+    usuarios:
+      path: /usuarios/**
+      serviceId: servicio-usuario
+    tipos:
+      path: /tipos/**
+      serviceId: servicio-tipo
