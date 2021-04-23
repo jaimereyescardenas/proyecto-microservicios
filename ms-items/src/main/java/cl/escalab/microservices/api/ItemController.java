@@ -13,19 +13,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.escalab.microservices.dto.ItemDto;
+import cl.escalab.microservices.dto.TipoDto;
 import cl.escalab.microservices.model.Item;
 import cl.escalab.microservices.repository.ItemRepository;
 import cl.escalab.microservices.service.SequenceGeneratorService;
+import cl.escalab.microservices.service.TipoService;
 
 @RestController
 @RequestMapping("/api")
 public class ItemController {
 	
 	@Autowired
-	ItemRepository itemRepository;
+	private ItemRepository itemRepository;
+	
+	@Autowired
+	private TipoService tipoService;
 
 	@Autowired
-	SequenceGeneratorService seqService;
+	private SequenceGeneratorService seqService;
+	
+	@GetMapping({"/", "/health"})
+	public String health() {
+		return "Todo OK";
+	}
 	
 	@PostMapping("/save")
 	public Item createItem(@RequestBody Item item) {
@@ -97,6 +108,25 @@ public class ItemController {
 		itemRepository.deleteById(id);
 		return item.get();
 		
+	}
+	
+	@GetMapping("/random")
+	public ItemDto getRandomItem() {
+		
+		TipoDto tipo = tipoService.getRandomTipo();
+		List<Item> items = itemRepository.findByIdTipo(tipo.getId());
+		
+		int randomItemId = (int) (Math.random() * items.size());
+		Item randomItem = items.get(randomItemId);
+		
+		ItemDto itemDto = new ItemDto();
+		itemDto.setId(randomItem.getId());
+		itemDto.setNombre(randomItem.getNombre());
+		itemDto.setDescripcion(randomItem.getDescripcion());
+		itemDto.setUrlImagen(randomItem.getUrlImagen());
+		itemDto.setTipo(tipo);
+		
+		return itemDto;
 	}
 	
 }

@@ -96,7 +96,7 @@ public class UsuarioController {
 		
 	}
 	
-	@PostMapping("obtain")
+	@PostMapping("/obtain")
 	public ItemResponseDto getRandomItem(@RequestBody GetItemDto datos) {
 		
 		Long idUsuario = datos.getIdUsuario();
