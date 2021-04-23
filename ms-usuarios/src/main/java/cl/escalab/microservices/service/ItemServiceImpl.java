@@ -1,16 +1,12 @@
 package cl.escalab.microservices.service;
 
-import java.net.URI;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import cl.escalab.microservices.client.EurekaClient;
+import cl.escalab.microservices.client.ItemFeignClient;
 import cl.escalab.microservices.dto.ItemDto;
 import cl.escalab.microservices.dto.TipoDto;
 
@@ -18,24 +14,18 @@ import cl.escalab.microservices.dto.TipoDto;
 public class ItemServiceImpl implements ItemService {
 	
 	@Autowired
-	private EurekaClient eureka;
-	
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Bean
-//	@LoadBalanced
-	public RestTemplate getRestTemplate() {
-		return new RestTemplate();
-	}
+	private ItemFeignClient itemClient;
 
 	@Override
-	@HystrixCommand(fallbackMethod = "defaultItem")
+	@HystrixCommand(fallbackMethod = "defaultItem", 
+		commandProperties = {
+				@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
+				@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "3"),
+				@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50")}
+	)
 	public ItemDto getRandomItem() {
 		
-		URI itemURI = eureka.getUri("SERVICIO-ITEM");
-		ItemDto item = restTemplate.getForObject(itemURI.resolve("/api/random"), ItemDto.class);
-		return item;
+		return itemClient.getRandomItem();
 		
 	}
 	
