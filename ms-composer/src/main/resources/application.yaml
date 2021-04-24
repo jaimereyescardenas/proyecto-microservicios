@@ -1,0 +1,14 @@
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    instance:
+      leaseRenewalIntervalInSeconds: 1
+      leaseExpirationDurationInSeconds: 2
+      status-page-url-path: /info
+      health-check-url-path: /health
+      metadata-map:
+        app-owner: Jaime Reyes
+        description: Servicio Composer
+        initial-status: UP

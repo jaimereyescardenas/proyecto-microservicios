@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import cl.escalab.microservices.dto.UsuarioDto;
 import cl.escalab.microservices.model.Usuario;
 
 public interface UsuarioService {
@@ -15,5 +16,6 @@ public interface UsuarioService {
 	public Set<Usuario> findByItems_IdItem(Long idItem);
 	public Usuario save(Usuario usuario);
 	public void deleteById(Long id);
+	public UsuarioDto convertToDto(Usuario usuario);
 
 }

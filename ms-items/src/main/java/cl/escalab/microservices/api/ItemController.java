@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.escalab.microservices.dto.ItemDto;
+import cl.escalab.microservices.dto.ItemComposeDto;
 import cl.escalab.microservices.dto.TipoDto;
 import cl.escalab.microservices.model.Item;
 import cl.escalab.microservices.repository.ItemRepository;
@@ -84,6 +84,18 @@ public class ItemController {
 		
 	}
 	
+	@GetMapping("/find/many/{ids}")
+	public List<Item> getItemsById(@PathVariable(name = "ids") List<Long> ids) {
+		
+		if (ids.size() == 0) {
+			// TODO BadRequestException
+		}
+		
+		List<Item> items = (List<Item>) itemRepository.findAllById(ids);
+		return items;
+		
+	}
+	
 	@PutMapping("/edit/{id}")
 	public Item edit(@PathVariable(name = "id") Long id, @RequestBody Item item) {
 		
@@ -111,7 +123,7 @@ public class ItemController {
 	}
 	
 	@GetMapping("/random")
-	public ItemDto getRandomItem() {
+	public ItemComposeDto getRandomItem() {
 		
 		TipoDto tipo = tipoService.getRandomTipo();
 		List<Item> items = itemRepository.findByIdTipo(tipo.getId());
@@ -119,7 +131,7 @@ public class ItemController {
 		int randomItemId = (int) (Math.random() * items.size());
 		Item randomItem = items.get(randomItemId);
 		
-		ItemDto itemDto = new ItemDto();
+		ItemComposeDto itemDto = new ItemComposeDto();
 		itemDto.setId(randomItem.getId());
 		itemDto.setNombre(randomItem.getNombre());
 		itemDto.setDescripcion(randomItem.getDescripcion());

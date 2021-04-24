@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.escalab.microservices.dto.GetItemDto;
 import cl.escalab.microservices.dto.ItemDto;
 import cl.escalab.microservices.dto.ItemResponseDto;
+import cl.escalab.microservices.dto.UsuarioDto;
 import cl.escalab.microservices.exception.BadRequestException;
 import cl.escalab.microservices.exception.ResourceNotFoundException;
 import cl.escalab.microservices.model.Usuario;
+import cl.escalab.microservices.model.UsuarioHasItem;
 import cl.escalab.microservices.service.ItemService;
 import cl.escalab.microservices.service.UsuarioHasItemService;
 import cl.escalab.microservices.service.UsuarioService;
@@ -114,11 +116,35 @@ public class UsuarioController {
 			itemResponse.setRepetido(true);
 		} else {
 			itemResponse.setRepetido(false);
+			
+			UsuarioHasItem uhi = new UsuarioHasItem();
+			uhi.setIdItem(idItem);
+			uhi.setIdUsuario(idUsuario);
+			
+			usuarioHasItemService.save(uhi);
 		}
 		
 		itemResponse.setItem(item);
 		return itemResponse;
 		
+	}
+	
+	@GetMapping("/details/{id}")
+	public UsuarioDto getDetails(@PathVariable(name = "id") Long id) {
+		
+		if (id <= 0) {
+			throw new BadRequestException();
+		}
+		
+		Optional<Usuario> usuario = usuarioService.findById(id);
+		
+		if (!usuario.isPresent()) {
+			throw new ResourceNotFoundException();
+		}
+		
+		UsuarioDto usuarioDto = usuarioService.convertToDto(usuario.get());
+		
+		return usuarioDto;
 	}
 	
 }

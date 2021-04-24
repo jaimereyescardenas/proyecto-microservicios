@@ -10,11 +10,11 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDto {
-	
+public class UsuarioComposeDto {
+
 	private Long id;
 	private String nombre;
 	private String email;
-	private List<Long> items;
-
+	private List<ItemComposeDto> items;
+	
 }

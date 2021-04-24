@@ -15,6 +15,9 @@ public class CustomRule implements IRule {
 	public Server choose(Object key) {
 		
 		List<Server> servers = lb.getAllServers();
+		if (servers.size() == 0) {
+			return null;
+		}
 		Random r = new Random();
 		return servers.get(r.nextInt(servers.size()));
 	}
