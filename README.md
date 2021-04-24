@@ -41,3 +41,7 @@ Además, el servidor perimetral Zuul está configurado de la siguiente forma:
 - /tipos/** : Deriva las solicitudes al microservicio ms-tipos
 - /items/** : Deriva las solicitudes al microservicio ms-items
 - /usuarios/** : Deriva las solicitudes al microservicio ms-usuarios
+
+## Github
+
+El código fuente de este proyecto está hospedado en Github, en el link [https://github.com/jaimereyescardenas/proyecto-microservicios](https://github.com/jaimereyescardenas/proyecto-microservicios)
