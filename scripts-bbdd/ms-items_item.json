@@ -1,0 +1,85 @@
+﻿[{
+  "_id": 1,
+  "nombre": "Bulbasaur",
+  "descripcion": "Bulbasaur desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
+  "idTipo": 1,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 2,
+  "nombre": "Ivisaur",
+  "descripcion": "Ivisaur desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/002.png",
+  "idTipo": 2,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 3,
+  "nombre": "Venasaur",
+  "descripcion": "Venasaur desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png",
+  "idTipo": 3,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 4,
+  "nombre": "Charmander",
+  "descripcion": "Charmander desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
+  "idTipo": 1,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 5,
+  "nombre": "Charmeleon",
+  "descripcion": "Charmeleon desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/005.png",
+  "idTipo": 2,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 6,
+  "nombre": "Charizard",
+  "descripcion": "Charizard desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/006.png",
+  "idTipo": 3,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 7,
+  "nombre": "Squirtle",
+  "descripcion": "Squirtle desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png",
+  "idTipo": 1,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 8,
+  "nombre": "Wartortle",
+  "descripcion": "Wartortle desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/008.png",
+  "idTipo": 2,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 9,
+  "nombre": "Blastoise",
+  "descripcion": "Blastoise desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/009.png",
+  "idTipo": 3,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 10,
+  "nombre": "Articuno",
+  "descripcion": "Articuno desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/144.png",
+  "idTipo": 4,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 11,
+  "nombre": "Zapdos",
+  "descripcion": "Zapdos desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/145.png",
+  "idTipo": 4,
+  "_class": "cl.escalab.microservices.model.Item"
+},{
+  "_id": 12,
+  "nombre": "Moltres",
+  "descripcion": "Moltres desc",
+  "urlImagen": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/146.png",
+  "idTipo": 4,
+  "_class": "cl.escalab.microservices.model.Item"
+}]
