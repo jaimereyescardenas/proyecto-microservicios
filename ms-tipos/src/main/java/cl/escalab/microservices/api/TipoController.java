@@ -86,4 +86,11 @@ public class TipoController {
 		
 	}
 	
+	@GetMapping("/random")
+	public Tipo getRandom() {
+		
+		return tipoService.getRandom();
+		
+	}
+	
 }

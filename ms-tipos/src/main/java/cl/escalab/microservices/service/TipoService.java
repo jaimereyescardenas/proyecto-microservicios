@@ -11,5 +11,6 @@ public interface TipoService {
 	public List<Tipo> findAll();
 	public Tipo save(Tipo tipo);
 	public void deleteById(Long id);
+	public Tipo getRandom();
 	
 }
